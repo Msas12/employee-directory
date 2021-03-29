@@ -1,25 +1,20 @@
 import React from "react";
 
-const EmployeeTableBody = () => {
+const EmployeeTableBody = (props) => {
   return (
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td colSpan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
+      {props.employees.map((employee) => (
+        <tr key={employee.id.value}>
+          <td>
+            <img src={employee.picture.medium} alt="employee" />
+          </td>
+          <td>{`${employee.name.first} ${employee.name.last}`}</td>
+          <td>{employee.email}</td>
+          <td>{employee.phone}</td>
+        </tr>
+      ))}
     </tbody>
   );
 };
+
+export default EmployeeTableBody;
